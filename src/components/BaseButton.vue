@@ -1,14 +1,15 @@
-<template>
-    <button :class="`btn ${classes} text-uppercase`"
-        @click="onClick"
+<template functional>
+    <button :class="`btn ${props.classes} text-uppercase`"
+        @click="listeners.click"
         type="button">
-        {{ text }}
+        {{ props.text }}
     </button>
 </template>
 
 <script>
     export default {
         name: 'BaseButton',
+        functional: true,
         props: {
             classes: {
                 default: 'btn-primary',
@@ -19,11 +20,6 @@
                 required: true,
                 type: String
             },
-        },
-        methods: {
-            onClick(event) {
-                this.$emit('click', event);
-            }
         }
     }
 </script>
